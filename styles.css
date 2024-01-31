@@ -1,0 +1,168 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+header img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.conteudo {
+    background-color: #f2f2f2;
+    padding: 20px;
+    height: 1000px;
+}
+
+.destaque {
+    background-color: #fff;
+    position: absolute;
+    padding: 10px;
+    text-align: right;
+    border-radius: 10px;
+    height: 240px;
+    width: 360px;
+}
+
+.consulta-publica {
+    color: #6C757D;
+    position: absolute;
+    top: -2px;
+    left: 270px;
+    font-size: 14px;
+}
+
+.linha-cinza {
+    border: 1px solid #ddd;
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    margin: 10px 0;
+    width: 378px;
+}
+
+.tipo-documento {
+    margin-top: 10px;
+    position: absolute;
+    top: 45px;
+    left: 20px;
+    font-weight: normal;
+    color: #6C757D;
+}
+
+.tipo-documento img {
+    height: 20px;
+    width: 20px;
+    margin-top: 10px;
+}
+
+.cpf-instrucao,
+.cpf-instrucao-italico {
+    margin-top: 10px;
+    color: #6C757D;
+}
+
+.valores {
+    position: absolute;
+    left: 20px;
+    top: -5px;
+    color: #6C757D;
+}
+
+.cpf-instrucao {
+    position: absolute;
+    top: 120px;
+    left: 20px;
+    font-size: 12px;
+}
+
+.cpf-instrucao-italico {
+    position: absolute;
+    top: 140px;
+    left: 20px;
+    font-size: 12px;
+}
+
+@media screen and (max-width: 900px) {
+    .destaque {
+        background-color: #fff;
+        position: absolute;
+        padding: 10px;
+        text-align: right;
+        border-radius: 10px;
+        height: 240px;
+        width: 360px;
+    }
+
+    .consulta-publica {
+        color: #6C757D;
+        position: absolute;
+        top: -2px;
+        left: 270px;
+        font-size: 14px;
+    }
+
+    .linha-cinza {
+        border: 1px solid #ddd;
+        position: absolute;
+        top: 30px;
+        left: 0px;
+        margin: 10px 0;
+        width: 378px;
+    }
+
+    .tipo-documento img {
+        height: 20px;
+        width: 20px;
+        margin-top: 10px;
+    }
+
+    .tipo-documento {
+        margin-top: 10px;
+        position: absolute;
+        top: 45px;
+        left: 20px;
+        font-weight: normal;
+        color: #6C757D;
+    }
+
+    .valores {
+        position: absolute;
+        left: 20px;
+        top: -5px;
+        color: #6C757D;
+    }
+
+    .cpf-instrucao {
+        position: absolute;
+        top: 120px;
+        left: 20px;
+        font-size: 12px;
+    }
+
+    .cpf-instrucao,
+    .cpf-instrucao-italico {
+        margin-top: 10px;
+        color: #6C757D;
+    }
+
+
+    .cpf-instrucao-italico {
+        position: absolute;
+        top: 140px;
+        left: 20px;
+        font-size: 12px;
+    }
+}
+
+
+

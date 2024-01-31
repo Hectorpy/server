@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Consulte Agora</title>
+</head>
+
+<body>
+
+    <header>
+        <img src="./img1.png" alt="Cabeçalho">
+    </header>
+
+    <div class="conteudo">
+        <div class="destaque">
+            <p class="valores"><strong>Valores a Receber</strong></p>
+            <p class="consulta-publica">Consulta Pública</p>
+            <hr class="linha-cinza">
+            <p class="tipo-documento"><strong>Tipo de Documento</strong></p>
+            <img src="./img2.png" alt="Exemplo de Imagem" class="tipo-documento2"
+                style="height: 35px; position: absolute; left: 10px; top: 80px;">
+            <p class="cpf-instrucao"><strong> Insira o CPF</strong></p>
+            <p class="cpf-instrucao-italico"><i>Digite o seu CPF ou de pessoa falecida</i></p>
+            <input type="text" id="cpfInput" placeholder="Exemplo: 000.000.000.0" maxlength="14"
+                style="width: 360px; box-sizing: border-box; padding: 8px; position: absolute; left: 15px; top: 175px; border-radius: 5px; border: 1px solid;">
+            <button onclick="consultarCPF()"
+                style="background-color: #077391; padding: 8px; position: absolute; left: 15px; top: 220px; border: none; cursor: pointer; border-radius: 5px; width: 360px; color: white;">Consultar
+                <img src="./img5.png" alt="Lupa" class="Lupa"
+                    style="height: 20px; position: absolute; left: 129px; top: 5px;">
+            </button>
+            <p id="cpfStatus" style="position: absolute; left: 15px; top: 260px; color: red;"></p>
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+
+        async function consultarCPFOnChange() {
+            var cpf = document.getElementById('cpfInput').value.replace(/[^\d]+/g, ''); 
+            var cpfStatusElement = document.getElementById('cpfStatus');
+            var consultarButton = document.getElementById('consultarButton');
+
+            try {
+                const response = await fetch('http://localhost:3000/validar-cpf', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ cpf }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    cpfStatusElement.innerText = '';
+                    consultarButton.disabled = false;
+                    consultarButton.style.cursor = 'pointer';
+                } else {
+                    cpfStatusElement.innerText = data.message;
+                    cpfStatusElement.style.color = 'red';
+                    consultarButton.disabled = true;
+                    consultarButton.style.cursor = 'not-allowed';
+                }
+            } catch (error) {
+                console.error('Erro ao consultar o servidor local:', error);
+            }
+        }
+
+
+        async function consultarCPF() {
+            var cpf = document.getElementById('cpfInput').value.replace(/[^\d]+/g, '');
+            var cpfStatusElement = document.getElementById('cpfStatus');
+
+            try {
+                const response = await fetch('http://localhost:3000/validar-cpf', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ cpf }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    cpfStatusElement.innerText = '';
+                    document.querySelector('button').style.backgroundColor = '#077391';
+                    document.querySelector('button').addEventListener('click', function () {
+                        window.location.href = 'https://www.google.com';
+                    });
+                } else {
+                    cpfStatusElement.innerText = data.message;
+                    cpfStatusElement.style.color = 'red';
+                }
+            } catch (error) {
+                console.error('Erro ao consultar o servidor local:', error);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
